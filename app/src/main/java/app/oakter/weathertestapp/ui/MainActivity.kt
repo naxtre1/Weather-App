@@ -1,4 +1,4 @@
-package app.oakter.weathertestapp
+package app.oakter.weathertestapp.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import app.oakter.weathertestapp.data.Hourly
+import app.oakter.weathertestapp.util.GPSLocationFetcher
+import app.oakter.weathertestapp.data.remote.beans.WeatherResponse
+import app.oakter.weathertestapp.viewmodel.WeatherViewModel
+import app.oakter.weathertestapp.data.remote.beans.Hourly
 import app.oakter.weathertestapp.databinding.ActivityMainBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -18,7 +21,7 @@ class MainActivity : AppCompatActivity(), GPSLocationFetcher.GetGpsCordinates {
     private var binding: ActivityMainBinding? = null
     private var viewModel: WeatherViewModel? = null
     private var fusedLocationClient: FusedLocationProviderClient? = null
-    private var weatherRecyclerView : WeatherRecyclerView? = null
+    private var weatherRecyclerViewAdapter : WeatherRecyclerViewAdapter? = null
     private var hourlyData: List<Hourly>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +38,7 @@ class MainActivity : AppCompatActivity(), GPSLocationFetcher.GetGpsCordinates {
     private fun observeData() {
         viewModel?.getWeatherList()?.observe(this, Observer<WeatherResponse> {
             Log.e("it", " : ::  : : ${it}")
-            weatherRecyclerView?.updateList(it.hourly)
+            weatherRecyclerViewAdapter?.updateList(it.hourly)
         })
     }
 
@@ -45,7 +48,7 @@ class MainActivity : AppCompatActivity(), GPSLocationFetcher.GetGpsCordinates {
 
     private fun initRecyclerView() {
         binding?.weatherRecyclerView?.setLayoutManager(LinearLayoutManager(this))
-        weatherRecyclerView = WeatherRecyclerView(this, hourlyData)
-        binding?.weatherRecyclerView?.adapter = weatherRecyclerView
+        weatherRecyclerViewAdapter = WeatherRecyclerViewAdapter(this, hourlyData)
+        binding?.weatherRecyclerView?.adapter = weatherRecyclerViewAdapter
     }
 }

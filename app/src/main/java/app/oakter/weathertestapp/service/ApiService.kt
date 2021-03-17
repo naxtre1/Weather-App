@@ -1,7 +1,7 @@
-package app.oakter.weathertestapp
+package app.oakter.weathertestapp.service
 
+import app.oakter.weathertestapp.data.remote.beans.WeatherResponse
 import io.reactivex.rxjava3.core.Observable
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 

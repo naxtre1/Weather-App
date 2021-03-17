@@ -1,20 +1,20 @@
-package app.oakter.weathertestapp
+package app.oakter.weathertestapp.data.local.room.converters
 
 import androidx.room.TypeConverter
-import app.oakter.weathertestapp.data.Weather
+import app.oakter.weathertestapp.data.remote.beans.Hourly
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class WeatherListConverter {
+class HourlyListConverter {
     private val gSon = Gson()
 
     @TypeConverter
-    public fun stringToArrayList(data: String?): ArrayList<Weather> {
+    public fun stringToArrayList(data: String?): List<Hourly> {
         if (data == null) {
             return ArrayList()
         }
         val listType =
-            object : TypeToken<ArrayList<Weather?>?>() {}.type
+            object : TypeToken<List<Hourly?>?>() {}.type
         return gSon.fromJson(
             data,
             listType
@@ -22,7 +22,10 @@ class WeatherListConverter {
     }
 
     @TypeConverter
-    fun arrayListToString(someObjects: ArrayList<Weather?>?): String {
+    fun arrayListToString(someObjects: List<Hourly?>?): String {
         return gSon.toJson(someObjects)
     }
 }
+
+
+

@@ -1,8 +1,10 @@
-package app.oakter.weathertestapp
+package app.oakter.weathertestapp.data
 
 import androidx.lifecycle.LiveData
+import app.oakter.weathertestapp.data.local.room.dao.WeatherDao
+import app.oakter.weathertestapp.data.remote.beans.WeatherResponse
+import app.oakter.weathertestapp.service.ApiService
 import io.reactivex.rxjava3.core.Observable
-import java.util.*
 
 import javax.inject.Inject
 

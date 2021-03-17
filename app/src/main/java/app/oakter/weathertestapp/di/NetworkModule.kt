@@ -1,5 +1,6 @@
-package app.oakter.weathertestapp
+package app.oakter.weathertestapp.di
 
+import app.oakter.weathertestapp.service.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

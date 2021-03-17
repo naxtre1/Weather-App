@@ -1,8 +1,7 @@
-package app.oakter.weathertestapp.data.local.room.type_converters
+package app.oakter.weathertestapp.data.local.room.converters
 
 import androidx.room.TypeConverter
-import app.oakter.weathertestapp.data.Current
-import app.oakter.weathertestapp.data.Hourly
+import app.oakter.weathertestapp.data.remote.beans.Current
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

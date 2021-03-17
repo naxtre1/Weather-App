@@ -1,7 +1,7 @@
-package app.oakter.weathertestapp.data
+package app.oakter.weathertestapp.data.remote.beans
 
 import androidx.room.TypeConverters
-import app.oakter.weathertestapp.WeatherListConverter
+import app.oakter.weathertestapp.data.local.room.converters.WeatherListConverter
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 

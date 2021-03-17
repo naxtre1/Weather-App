@@ -1,4 +1,4 @@
-package app.oakter.weathertestapp
+package app.oakter.weathertestapp.widget
 
 import android.app.Service
 import android.appwidget.AppWidgetManager
@@ -7,12 +7,13 @@ import android.content.Intent
 import android.os.IBinder
 import android.util.Log
 import android.widget.RemoteViews
+import app.oakter.weathertestapp.util.GPSLocationFetcher
+import app.oakter.weathertestapp.di.NetworkModule
+import app.oakter.weathertestapp.R
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.*
-import javax.inject.Inject
 
 class UpdateService : Service(), GPSLocationFetcher.GetGpsCordinates {
 
@@ -36,7 +37,8 @@ class UpdateService : Service(), GPSLocationFetcher.GetGpsCordinates {
     }
 
     override fun getcordinates(lattitude: Double, longitude: Double) {
-        NetworkModule.providePokemonApiService().getWeather(lattitude, longitude, "minutely,daily,alerts", "imperial","7f6353c7f29edd943084378cb7950a60")
+        NetworkModule.providePokemonApiService()
+            .getWeather(lattitude, longitude, "minutely,daily,alerts", "imperial","7f6353c7f29edd943084378cb7950a60")
             ?.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ result ->

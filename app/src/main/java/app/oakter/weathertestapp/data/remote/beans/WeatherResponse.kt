@@ -1,12 +1,10 @@
-package app.oakter.weathertestapp
+package app.oakter.weathertestapp.data.remote.beans
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import app.oakter.weathertestapp.data.Current
-import app.oakter.weathertestapp.data.Hourly
-import app.oakter.weathertestapp.data.local.room.type_converters.CurrentConverter
-import app.oakter.weathertestapp.data.local.room.type_converters.HourlyListConverter
+import app.oakter.weathertestapp.data.local.room.converters.CurrentConverter
+import app.oakter.weathertestapp.data.local.room.converters.HourlyListConverter
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 

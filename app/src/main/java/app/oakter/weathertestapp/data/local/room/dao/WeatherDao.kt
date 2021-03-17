@@ -1,9 +1,10 @@
-package app.oakter.weathertestapp
+package app.oakter.weathertestapp.data.local.room.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import app.oakter.weathertestapp.data.remote.beans.WeatherResponse
 
 
 @Dao

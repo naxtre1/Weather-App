@@ -1,4 +1,4 @@
-package app.oakter.weathertestapp.data
+package app.oakter.weathertestapp.data.remote.beans
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

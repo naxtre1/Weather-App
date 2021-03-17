@@ -1,4 +1,4 @@
-package app.oakter.weathertestapp
+package app.oakter.weathertestapp.util
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -17,10 +17,10 @@ import androidx.core.content.ContextCompat
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import app.oakter.weathertestapp.R
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.common.api.ResultCallback
 import com.google.android.gms.location.*
-import com.google.android.gms.tasks.OnFailureListener
 
 
 class GPSLocationFetcher {
@@ -89,7 +89,8 @@ class GPSLocationFetcher {
 
     fun retrieveLocation(context: Activity,
                          fusedLocationClient: FusedLocationProviderClient,
-                         listener: GetGpsCordinates) {
+                         listener: GetGpsCordinates
+    ) {
 
         displayLocationSettingsRequest(context, object : GPSEnabled {
             override fun gpsEnabled() {
@@ -103,7 +104,8 @@ class GPSLocationFetcher {
 
     fun retrieveLocation(context: Context,
                          fusedLocationClient: FusedLocationProviderClient,
-                         listener: GetGpsCordinates) {
+                         listener: GetGpsCordinates
+    ) {
 
         displayLocationSettingsRequest(context, object : GPSEnabled {
             override fun gpsEnabled() {

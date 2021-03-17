@@ -1,16 +1,17 @@
-package app.oakter.weathertestapp
+package app.oakter.weathertestapp.ui
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import app.oakter.weathertestapp.data.Hourly
+import app.oakter.weathertestapp.data.remote.beans.Hourly
 import app.oakter.weathertestapp.databinding.HourlyRecyclerViewBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class WeatherRecyclerView(val context: Context, var hourlyData: List<Hourly>?): RecyclerView.Adapter<WeatherRecyclerView.WeatherViewHolder>() {
+class WeatherRecyclerViewAdapter(val context: Context, var hourlyData: List<Hourly>?) :
+    RecyclerView.Adapter<WeatherRecyclerViewAdapter.WeatherViewHolder>() {
     private var binding: HourlyRecyclerViewBinding? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
         val inflater = LayoutInflater.from(context)
@@ -26,10 +27,11 @@ class WeatherRecyclerView(val context: Context, var hourlyData: List<Hourly>?): 
     }
 
     override fun getItemCount(): Int {
-        if (hourlyData != null) {
-            return hourlyData!!.size
+        return if (hourlyData != null) {
+            val size = (hourlyData!!.size / 2) - 1
+            if (size > 0) size else 0
         } else
-            return 0
+            0
     }
 
     class WeatherViewHolder(var binding: HourlyRecyclerViewBinding) : RecyclerView.ViewHolder(
@@ -49,7 +51,7 @@ class WeatherRecyclerView(val context: Context, var hourlyData: List<Hourly>?): 
             val date = Date(timeStamp * 1000L)
             // format of the date
             // format of the date
-            val jdf = SimpleDateFormat("HH:mm:ss")
+            val jdf = SimpleDateFormat("HH:mm:ss", Locale.ROOT)
             jdf.timeZone = TimeZone.getTimeZone("IST")
             val java_date = jdf.format(date)
             return java_date
@@ -62,7 +64,6 @@ class WeatherRecyclerView(val context: Context, var hourlyData: List<Hourly>?): 
         hourlyData = updatedList
         notifyDataSetChanged()
     }
-
 
 
 }

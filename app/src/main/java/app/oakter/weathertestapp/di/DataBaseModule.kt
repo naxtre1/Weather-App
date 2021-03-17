@@ -1,7 +1,9 @@
-package app.oakter.weathertestapp
+package app.oakter.weathertestapp.di
 
 import android.app.Application
 import androidx.room.Room
+import app.oakter.weathertestapp.data.local.room.WeatherDB
+import app.oakter.weathertestapp.data.local.room.dao.WeatherDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
